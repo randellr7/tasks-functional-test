@@ -12,11 +12,12 @@ public class TasksTest {
 	
 	public WebDriver acessarAplicacao() {
 		WebDriver driver = new ChromeDriver();
+		//System.setProperty("webdriver.chrome.driver", "web-driver/chromedriver.exe");
 		driver.manage().window().maximize();
 		driver.navigate().to("http://localhost:8001/tasks/");
 		return driver;
 	}
-	
+	// C:\Users\Admin\Desktop\igt-test\dev\java\seleniumDrivers
 	
 	@Test
 	public void deveSalvarTarefaComSucesso() throws InterruptedException {

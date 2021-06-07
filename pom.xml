@@ -5,7 +5,7 @@
 	<groupId>br.ce.randellr7.tasks</groupId>
 	<artifactId>functional-test</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	
 
 	<dependencies>
 		<dependency>
