@@ -124,19 +124,19 @@ public class TasksTest {
 		Thread.sleep(1000);
 		try {
 			//inserir tarefa
-			driver.findElement(By.id("addTodo")).click();
-			Thread.sleep(1000);
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	
-			driver.findElement(By.id("task")).sendKeys("descricao auto 1");
-			driver.findElement(By.id("dueDate")).sendKeys("10/10/2020");
-			driver.findElement(By.id("saveButton")).click();
-			String msg = driver.findElement(By.id("message")).getText();
-			Assert.assertEquals("Sucess!", msg);
+//			driver.findElement(By.id("addTodo")).click();
+//			Thread.sleep(1000);
+//			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//	
+//			driver.findElement(By.id("task")).sendKeys("descricao auto 1");
+//			driver.findElement(By.id("dueDate")).sendKeys("10/10/2021");
+//			driver.findElement(By.id("saveButton")).click();
+//			String msg = driver.findElement(By.id("message")).getText();
+//			Assert.assertEquals("Sucess!", msg);
 			
 			//remover tarefa
 			driver.findElement(By.xpath("//*[@id=\"todoTable\"]/tbody/tr/td[3]/a")).click();
-			msg = driver.findElement(By.id("message")).getText();
+			String msg = driver.findElement(By.id("message")).getText();
 			Assert.assertEquals("Sucess!", msg);
 			
 	
