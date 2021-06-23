@@ -15,9 +15,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class TasksTest {
 	
 	public WebDriver acessarAplicacao() throws MalformedURLException {
-		//WebDriver driver = new ChromeDriver();
-		DesiredCapabilities cap = DesiredCapabilities.chrome();
-		WebDriver driver = new RemoteWebDriver(new URL("http://10.0.2.207:4444/wd/hub"), cap);
+		WebDriver driver = new ChromeDriver();
+		//DesiredCapabilities cap = DesiredCapabilities.chrome();
+		//WebDriver driver = new RemoteWebDriver(new URL("http://10.0.2.207:4444/wd/hub"), cap);
 		driver.manage().window().maximize();
 		driver.navigate().to("http://10.0.2.207:8001/tasks/");
 		return driver;
@@ -113,6 +113,33 @@ public class TasksTest {
 
 		String msg = driver.findElement(By.id("message")).getText();
 		Assert.assertEquals("Due date must not be in past", msg);
+		}finally {
+			driver.quit();
+		}
+	}
+	
+	@Test
+	public void deveRemoverTarefaComSucesso() throws InterruptedException, MalformedURLException {
+		WebDriver driver = acessarAplicacao();
+		Thread.sleep(1000);
+		try {
+			//inserir tarefa
+			driver.findElement(By.id("addTodo")).click();
+			Thread.sleep(1000);
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	
+			driver.findElement(By.id("task")).sendKeys("descricao auto 1");
+			driver.findElement(By.id("dueDate")).sendKeys("10/10/2020");
+			driver.findElement(By.id("saveButton")).click();
+			String msg = driver.findElement(By.id("message")).getText();
+			Assert.assertEquals("Sucess!", msg);
+			
+			//remover tarefa
+			driver.findElement(By.xpath("//*[@id=\"todoTable\"]/tbody/tr/td[3]/a")).click();
+			msg = driver.findElement(By.id("message")).getText();
+			Assert.assertEquals("Sucess!", msg);
+			
+	
 		}finally {
 			driver.quit();
 		}
